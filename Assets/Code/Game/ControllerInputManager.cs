@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandControllerInput : MonoBehaviour
+public class ControllerInputManager : MonoBehaviour
 {
 	public SteamVR_TrackedObject trackedObject;
 	public SteamVR_Controller.Device device;
@@ -13,7 +13,7 @@ public class HandControllerInput : MonoBehaviour
 	public Vector3 teleportLocation;
 	public GameObject player;
 	public LayerMask laserMask;
-	public static float yNudgeAmount = 1f; // specific to teleportAimerObject height
+	public static float yNudgeAmount = 0f; // specific to teleportAimerObject height
 	private static readonly Vector3 yNudgeVector = new Vector3(0f, yNudgeAmount, 0f);
 
 	// Use this for initialization

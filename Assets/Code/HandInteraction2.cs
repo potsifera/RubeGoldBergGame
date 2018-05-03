@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class HandInteraction2 : MonoBehaviour
 {
-
 	public SteamVR_TrackedObject trackedObj;
 	private SteamVR_Controller.Device device;
 	public float throwForce = 1.5f;
 
-	//swipe
+	//Swipe
 	public float swipeSum;
 	public float touchLast;
 	public float touchCurrent;
@@ -28,9 +27,9 @@ public class HandInteraction2 : MonoBehaviour
 	void Update()
 	{
 		device = SteamVR_Controller.Input((int)trackedObj.index);
-
-		if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad)) {
-			touchLast = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x; 
+		if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad))
+		{
+			touchLast = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
 		}
 		if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad))
 		{
@@ -38,7 +37,6 @@ public class HandInteraction2 : MonoBehaviour
 			distance = touchCurrent - touchLast;
 			touchLast = touchCurrent;
 			swipeSum += distance;
-
 			if (!hasSwipedRight)
 			{
 				if (swipeSum > 0.5f)
@@ -49,10 +47,10 @@ public class HandInteraction2 : MonoBehaviour
 					hasSwipedLeft = false;
 				}
 			}
-
-			if (!hasSwipedRight)
+			if (!hasSwipedLeft)
 			{
-				if (swipeSum < -0.5f)
+
+				if (swipeSum < 0.5f)
 				{
 					swipeSum = 0;
 					SwipeLeft();
@@ -61,7 +59,6 @@ public class HandInteraction2 : MonoBehaviour
 				}
 			}
 		}
-
 		if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Touchpad))
 		{
 			swipeSum = 0;
@@ -70,7 +67,17 @@ public class HandInteraction2 : MonoBehaviour
 			hasSwipedLeft = false;
 			hasSwipedRight = false;
 		}
+		if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+		{
+			//Spawn object currently selected by menu
+			SpawnObject();
+		}
+	}
 
+	void SpawnObject()
+	{
+		objectMenuManager.SpawnCurrentObject();
+		Debug.Log("spawned object");
 	}
 
 	void SwipeLeft()
@@ -78,12 +85,11 @@ public class HandInteraction2 : MonoBehaviour
 		objectMenuManager.MenuLeft();
 		Debug.Log("SwipeLeft");
 	}
-
-	void SwipeRight() {
+	void SwipeRight()
+	{
 		objectMenuManager.MenuRight();
 		Debug.Log("SwipeRight");
 	}
-
 	void OnTriggerStay(Collider col)
 	{
 		if (col.gameObject.CompareTag("Throwable"))
@@ -98,22 +104,20 @@ public class HandInteraction2 : MonoBehaviour
 			}
 		}
 	}
-
-	void GrabObject(Collider col)
+	void GrabObject(Collider coli)
 	{
-		col.transform.SetParent(gameObject.transform);
-		col.GetComponent<Rigidbody>().isKinematic = true;
+		coli.transform.SetParent(gameObject.transform);
+		coli.GetComponent<Rigidbody>().isKinematic = true;
 		device.TriggerHapticPulse(2000);
-		Debug.Log("you are touching down the trigger on an object");
+		Debug.Log("You are touching down the trigger on an object");
 	}
-
-	void ThrowObject(Collider col)
+	void ThrowObject(Collider coli)
 	{
-		col.transform.SetParent(null);
-		Rigidbody rigidBody = col.GetComponent<Rigidbody>();
+		coli.transform.SetParent(null);
+		Rigidbody rigidBody = coli.GetComponent<Rigidbody>();
 		rigidBody.isKinematic = false;
 		rigidBody.velocity = device.velocity * throwForce;
 		rigidBody.angularVelocity = device.angularVelocity;
-		Debug.Log("you have released the trigger");
+		Debug.Log("You have released the trigger");
 	}
 }
