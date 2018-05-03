@@ -38,7 +38,7 @@ public class ControllerInputManager : MonoBehaviour
 	{
 		device = SteamVR_Controller.Input((int)trackedObject.index);
 
-		if (device.GetPress(SteamVR_Controller.ButtonMask.Trigger))
+		if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
 		{
 			laser.gameObject.SetActive(true);
 			teleportAimerObject.SetActive(true);
@@ -63,7 +63,7 @@ public class ControllerInputManager : MonoBehaviour
 			teleportAimerObject.transform.position = teleportLocation + yNudgeVector;
 		}
 
-		if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
+		if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
 		{
 			laser.gameObject.SetActive(false);
 			teleportAimerObject.SetActive(false);
