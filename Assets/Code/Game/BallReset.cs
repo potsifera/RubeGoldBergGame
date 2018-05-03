@@ -6,9 +6,11 @@ public class BallReset : MonoBehaviour {
 	
 
 	public Vector3 initialPosition;
+	public Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
+		rb = GetComponent<Rigidbody>();
 		initialPosition = gameObject.transform.position;
 		Debug.Log(initialPosition);
 	}
@@ -18,13 +20,15 @@ public class BallReset : MonoBehaviour {
 		
 	}
 
-	void OnTriggerStay(Collider col)
+	void OnTriggerStay(Collider other)
 	{
-		if (col.gameObject.CompareTag("Ground"))
+		if (other.gameObject.CompareTag("Ground"))
 		{
 			Debug.Log("this is a collision with the ground");
 			gameObject.transform.position = initialPosition;
-			
+			rb.velocity = new Vector3(0, 0, 0);
+			rb.angularVelocity = new Vector3(0, 0, 0);
+
 		}
 	}
 
