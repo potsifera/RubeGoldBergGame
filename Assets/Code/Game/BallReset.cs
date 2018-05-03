@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallReset : MonoBehaviour {
-	public SteamVR_TrackedObject trackedObj;
-	private SteamVR_Controller.Device device;
+	
 
 	public Vector3 initialPosition;
 
 	// Use this for initialization
 	void Start () {
 		initialPosition = gameObject.transform.position;
+		Debug.Log(initialPosition);
 	}
 	
 	// Update is called once per frame
@@ -22,7 +22,9 @@ public class BallReset : MonoBehaviour {
 	{
 		if (col.gameObject.CompareTag("Ground"))
 		{
+			Debug.Log("this is a collision with the ground");
 			gameObject.transform.position = initialPosition;
+			
 		}
 	}
 
