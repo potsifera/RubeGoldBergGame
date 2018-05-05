@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerInputManager : MonoBehaviour
+public class ControllerInputManagerLeft : MonoBehaviour
 {
 	public SteamVR_TrackedObject trackedObject;
 	public SteamVR_Controller.Device device;
@@ -38,8 +38,11 @@ public class ControllerInputManager : MonoBehaviour
 	{
 		device = SteamVR_Controller.Input((int)trackedObject.index);
 
+		
+
 		if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
 		{
+			Debug.Log("left touchpad");
 			laser.gameObject.SetActive(true);
 			teleportAimerObject.SetActive(true);
 
