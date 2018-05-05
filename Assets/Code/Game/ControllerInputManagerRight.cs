@@ -72,6 +72,12 @@ public class ControllerInputManagerRight : MonoBehaviour {
 
 		}
 
+		if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+		{
+			//spawn object currently selected by menu
+			SpawnObject();
+		}
+
 	}
 
 	void SwipeLeft()
@@ -84,5 +90,10 @@ public class ControllerInputManagerRight : MonoBehaviour {
 	{
 		objectMenuManager.MenuRight();
 		Debug.Log("Swipe right");
+	}
+
+	void SpawnObject()
+	{
+		objectMenuManager.SpawnCurrentObject();
 	}
 }
