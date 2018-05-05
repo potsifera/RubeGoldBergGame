@@ -8,6 +8,7 @@ public class ControllerInputManagerRight : MonoBehaviour {
 	public SteamVR_Controller.Device device;
 
 	public ObjectMenuManager objectMenuManager;
+	public GameObject objectMenu;
 
 	//swipe
 	public float swipeSum;
@@ -20,6 +21,7 @@ public class ControllerInputManagerRight : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		trackedObject = GetComponent<SteamVR_TrackedObject>();
+		objectMenu.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -31,8 +33,9 @@ public class ControllerInputManagerRight : MonoBehaviour {
 			touchLast = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
 		}
 
-			if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad)) {
+		if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad)) {
 			Debug.Log("right touchpad");
+			objectMenu.SetActive(true);
 			touchCurrent = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
 			distance = touchCurrent - touchLast;
 			touchLast = touchCurrent;
@@ -69,6 +72,7 @@ public class ControllerInputManagerRight : MonoBehaviour {
 			touchLast = 0;
 			hasSwipedLeft = false;
 			hasSwipedRight = false;
+			objectMenu.SetActive(false);
 
 		}
 
@@ -96,4 +100,6 @@ public class ControllerInputManagerRight : MonoBehaviour {
 	{
 		objectMenuManager.SpawnCurrentObject();
 	}
+
+	
 }
