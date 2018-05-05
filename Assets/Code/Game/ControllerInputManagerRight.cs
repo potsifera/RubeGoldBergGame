@@ -76,7 +76,7 @@ public class ControllerInputManagerRight : MonoBehaviour {
 
 		}
 
-		if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+		if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
 		{
 			//spawn object currently selected by menu
 			SpawnObject();
