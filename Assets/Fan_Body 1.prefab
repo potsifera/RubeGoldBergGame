@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33513983155308598}
   - component: {fileID: 23985091073847484}
   - component: {fileID: 54521123882350578}
-  - component: {fileID: 65235764393839170}
+  - component: {fileID: 64465568860996170}
   m_Layer: 0
   m_Name: Fan_Body 1
   m_TagString: Structure
@@ -68,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 1838835133307380}
   m_LocalRotation: {x: -0.0000000035532453, y: 0.9990483, z: -0.0000000813828, w: -0.043618023}
   m_LocalPosition: {x: -0.61551404, y: 0.89557326, z: -2.369063}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4206955569806366}
   m_Father: {fileID: 0}
@@ -171,8 +171,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!65 &65235764393839170
-BoxCollider:
+--- !u!64 &64465568860996170
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -181,5 +181,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.008450803, y: 0.008127622, z: 0.0047566798}
-  m_Center: {x: -0.00000045308843, y: -0.000000013737008, z: 0.0000055885175}
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300026, guid: 118b350461f06ae4d831b8b9935c8502, type: 3}

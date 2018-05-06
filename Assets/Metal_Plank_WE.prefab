@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23710487050552160}
   - component: {fileID: 54378246757152302}
   - component: {fileID: 65516222040964016}
+  - component: {fileID: 65122783436472034}
+  - component: {fileID: 65827166762440494}
   m_Layer: 0
   m_Name: Metal_Plank_WE
   m_TagString: Structure
@@ -37,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1576944074409274}
   m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.593257, y: 0.8200232, z: -2.3642437}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalPosition: {x: 0.82867, y: 0.051, z: -3.496}
+  m_LocalScale: {x: 99.78007, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,6 +101,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!65 &65122783436472034
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576944074409274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020750249, y: 0.0011877408, z: 0.0004228483}
+  m_Center: {x: 0.000224844, y: 0.00030755386, z: -0.0017901724}
 --- !u!65 &65516222040964016
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -109,5 +123,17 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.021199979, y: 0.0011877408, z: 0.0040032286}
-  m_Center: {x: 0.000000009313226, y: 0.00030755013, z: 0.000000014319085}
+  m_Size: {x: 0.0212534, y: 0.0004576648, z: 0.0040032286}
+  m_Center: {x: 0.000026721953, y: -0.00011574376, z: 0.000000014305114}
+--- !u!65 &65827166762440494
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576944074409274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020750249, y: 0.0011877408, z: 0.0003743805}
+  m_Center: {x: 0.000224844, y: 0.00030755386, z: 0.0018202096}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33958341198364644}
   - component: {fileID: 23742829173052180}
   - component: {fileID: 54796141589668682}
-  - component: {fileID: 65510357413393452}
+  - component: {fileID: 64885996459402506}
   m_Layer: 0
   m_Name: Teleport_Target
   m_TagString: Structure
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1922072898702202}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0.5979413, y: 0.81429684, z: -2.3484826}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,8 +99,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!65 &65510357413393452
-BoxCollider:
+--- !u!64 &64885996459402506
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,5 +109,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.009112864, y: 0.009112838, z: 0.0010184911}
-  m_Center: {x: 0, y: 0, z: 0.00050924486}
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300154, guid: 118b350461f06ae4d831b8b9935c8502, type: 3}
