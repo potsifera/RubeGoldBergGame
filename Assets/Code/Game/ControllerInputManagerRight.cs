@@ -76,9 +76,10 @@ public class ControllerInputManagerRight : MonoBehaviour {
 
 		}
 
-		if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+		if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && objectMenu.activeInHierarchy)
 		{
 			//spawn object currently selected by menu
+			Debug.Log(objectMenu.activeInHierarchy);
 			SpawnObject();
 		}
 

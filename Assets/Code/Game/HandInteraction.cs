@@ -20,17 +20,30 @@ public class HandInteraction : MonoBehaviour {
 		
 	}
 
-	void OnTriggerStay(Collider col)
+	void OnTriggerStay(Collider other)
 	{
-		if (col.gameObject.CompareTag("Throwable"))
+		if (other.gameObject.CompareTag("Throwable"))
 		{
 			if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
 			{
-				ThrowObject(col);
+				ThrowObject(other);
 			}
 			else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
-				GrabObject(col);
+				GrabObject(other);
 			}
+		}
+
+		if (other.gameObject.CompareTag("Structure"))
+		{
+			if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+			{
+				GrabObject(other);
+			}
+			else if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
+			{
+				ReleaseObject(other);
+			}
+			
 		}
 	}
 
@@ -47,6 +60,13 @@ public class HandInteraction : MonoBehaviour {
 		rigidBody.isKinematic = false;
 		rigidBody.velocity = device.velocity * throwForce;
 		rigidBody.angularVelocity = device.angularVelocity;
-		Debug.Log("you have released the trigger");
+		Debug.Log("you have released the trigger and thrown");
+	}
+
+	void ReleaseObject(Collider col)
+	{
+		col.transform.SetParent(null);
+		Rigidbody rigidbody = col.GetComponent<Rigidbody>();
+		Debug.Log("you have released the object");
 	}
 }
