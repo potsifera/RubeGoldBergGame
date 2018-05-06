@@ -38,17 +38,7 @@ public class BallReset : MonoBehaviour {
 		}
 	}
 
-	bool CheckStars()
-	{
-		foreach (GameObject star in starPrefabs)
-		{
-			if (!star.activeInHierarchy)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
+	
 
 
 
