@@ -5,6 +5,7 @@ using UnityEngine;
 public class loadNextLevel : MonoBehaviour {
 
 	public List<GameObject> starPrefabs;
+	public SteamVR_LoadLevel loadLevel;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class loadNextLevel : MonoBehaviour {
 			if (CheckStars())
 			{
 				//change level
+				loadLevel.Trigger();
 				Debug.Log("chaning level");
 			}
 		}
