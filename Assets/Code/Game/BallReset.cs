@@ -7,8 +7,10 @@ public class BallReset : MonoBehaviour {
 
 	public Vector3 initialPosition;
 	public Rigidbody rb;
-
+	public Material inactiveBallMaterial;
 	public List<GameObject> starPrefabs;
+
+	private Renderer ballRenderer;
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +32,8 @@ public class BallReset : MonoBehaviour {
 			gameObject.transform.position = initialPosition;
 			rb.velocity = new Vector3(0, 0, 0);
 			rb.angularVelocity = new Vector3(0, 0, 0);
+			ballRenderer = gameObject.GetComponent<Renderer>();
+			ballRenderer.material = inactiveBallMaterial;
 
 			foreach (GameObject star in starPrefabs) {
 				star.SetActive(true);
@@ -37,9 +41,6 @@ public class BallReset : MonoBehaviour {
 
 		}
 	}
-
-	
-
 
 
 

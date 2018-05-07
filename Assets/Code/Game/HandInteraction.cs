@@ -7,6 +7,9 @@ public class HandInteraction : MonoBehaviour {
 	public SteamVR_TrackedObject trackedObj;
 	private SteamVR_Controller.Device device;
 	public float throwForce = 1.5f;
+	private Renderer ballRenderer;
+	public Material activeBallMaterial;
+	public Material inactiveBallMaterial;
 
 
 	// Use this for initialization
@@ -20,17 +23,27 @@ public class HandInteraction : MonoBehaviour {
 		
 	}
 
+
+
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject.CompareTag("Throwable"))
+		//if the ball is selected
+		if (other.gameObject.CompareTag("Throwable") )
 		{
+	
+			//trigger a throw
 			if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
 			{
 				ThrowObject(other);
 			}
-			else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
+			//grab the object
+			else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+			{
 				GrabObject(other);
 			}
+		}
+		else {
+
 		}
 
 		if (other.gameObject.CompareTag("Structure"))
@@ -69,4 +82,6 @@ public class HandInteraction : MonoBehaviour {
 		Rigidbody rigidbody = col.GetComponent<Rigidbody>();
 		Debug.Log("you have released the object");
 	}
+
+	
 }
