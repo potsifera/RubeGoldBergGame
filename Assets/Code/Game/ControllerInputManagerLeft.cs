@@ -15,6 +15,7 @@ public class ControllerInputManagerLeft : MonoBehaviour
 	public LayerMask laserMask;
 	public static float yNudgeAmount = 0f; // specific to teleportAimerObject height
 	private static readonly Vector3 yNudgeVector = new Vector3(0f, yNudgeAmount, 0f);
+	public float Height = 1f; // specific to teleportAimerObject height;
 
 	// Use this for initialization
 	void Start()
@@ -36,41 +37,68 @@ public class ControllerInputManagerLeft : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		device = SteamVR_Controller.Input((int)trackedObject.index);
 
-		
+		device = SteamVR_Controller.Input((int)trackedObject.index);
 
 		if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
 		{
-			Debug.Log("left touchpad");
+			//   Debug.Log("pressing down");
+
 			laser.gameObject.SetActive(true);
 			teleportAimerObject.SetActive(true);
 
-			setLaserStart(gameObject.transform.position);
+			laser.SetPosition(0, gameObject.transform.position);
 			RaycastHit hit;
+
+			// create bounds raycast condition // 
+
 			if (Physics.Raycast(transform.position, transform.forward, out hit, 15, laserMask))
 			{
+				//     Debug.Log(hit.point);
 				teleportLocation = hit.point;
+				laser.SetPosition(1, hit.point);
+				teleportAimerObject.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + Height, teleportLocation.z);
 			}
+
 			else
 			{
-				teleportLocation = transform.position + 15 * transform.forward;
+				teleportLocation = new Vector3(transform.forward.x * 15 + transform.position.x, transform.forward.y * 15 + transform.position.y, transform.forward.z * 15 + transform.position.z);
 				RaycastHit groundRay;
+
 				if (Physics.Raycast(teleportLocation, -Vector3.up, out groundRay, 17, laserMask))
 				{
-					teleportLocation.y = groundRay.point.y;
+					teleportLocation = new Vector3(transform.forward.x * 15 + transform.position.x, groundRay.point.y, transform.forward.z * 15 + transform.position.z);
+					laser.SetPosition(1, transform.forward * 15 + transform.position);
+					teleportAimerObject.transform.position = teleportLocation + new Vector3(0, Height, 0);
 				}
+
+				else
+				{
+
+					teleportLocation = Vector3.zero;
+					laser.SetPosition(1, transform.forward * 15 + transform.position);
+					teleportAimerObject.transform.position = teleportLocation + new Vector3(0, Height, 0);
+				}
+
 			}
-			setLaserEnd(teleportLocation);
-			// aimer
-			teleportAimerObject.transform.position = teleportLocation + yNudgeVector;
 		}
 
 		if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
 		{
-			laser.gameObject.SetActive(false);
-			teleportAimerObject.SetActive(false);
-			player.transform.position = teleportLocation;
+			if (teleportLocation != Vector3.zero)
+			{
+				laser.gameObject.SetActive(false);
+				teleportAimerObject.SetActive(false);
+				player.transform.position = teleportLocation;
+			}
+			else
+			{
+				laser.gameObject.SetActive(false);
+				teleportAimerObject.SetActive(false);
+				player.transform.position = player.transform.position;
+			}
+
 		}
 	}
 }
+
