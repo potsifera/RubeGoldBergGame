@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23985091073847484}
   - component: {fileID: 54521123882350578}
   - component: {fileID: 64465568860996170}
+  - component: {fileID: 182823885099883418}
   m_Layer: 0
   m_Name: Fan_Body 1
   m_TagString: Structure
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838835133307380}
   m_LocalRotation: {x: -0.0000000035532453, y: 0.9990483, z: -0.0000000813828, w: -0.043618023}
-  m_LocalPosition: {x: -2.3158405, y: 0.92, z: -3.46}
+  m_LocalPosition: {x: -3.0545108, y: 0.61, z: -6.3401275}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4206955569806366}
@@ -203,3 +204,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!182 &182823885099883418
+WindZone:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838835133307380}
+  m_Enabled: 1
+  m_Mode: 0
+  m_Radius: 20
+  m_WindMain: 1
+  m_WindTurbulence: 1
+  m_WindPulseMagnitude: 0.5
+  m_WindPulseFrequency: 0.01

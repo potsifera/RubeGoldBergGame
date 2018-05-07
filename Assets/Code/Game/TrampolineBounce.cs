@@ -21,7 +21,7 @@ public class TrampolineBounce : MonoBehaviour {
 	{
 		Debug.Log("something colided with trampoline");
 		otherRB = other.GetComponent<Rigidbody>();
-		otherRB.AddForce(transform.forward * 1000);
+		otherRB.AddForce(transform.forward * 500);
 	
 	}
 
