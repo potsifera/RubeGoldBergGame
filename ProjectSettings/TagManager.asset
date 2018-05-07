@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Structure
   - PlatformSensor
+  - Controller
   layers:
   - Default
   - TransparentFX

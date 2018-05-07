@@ -10,6 +10,7 @@ public class HandInteraction : MonoBehaviour {
 	private Renderer ballRenderer;
 	public Material activeBallMaterial;
 	public Material inactiveBallMaterial;
+	
 
 
 	// Use this for initialization

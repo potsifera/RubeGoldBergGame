@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StarScript : MonoBehaviour {
 
+	public PlatformSensorScript cheatSensor;
+
 	// Use this for initialization
 
 	void Start () {
@@ -17,7 +19,7 @@ public class StarScript : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Throwable"))
+		if (other.gameObject.CompareTag("Throwable") && cheatSensor.playerIsInside)
 		{
 			gameObject.SetActive(false);
 		}
