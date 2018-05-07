@@ -15,7 +15,7 @@ public class ControllerInputManagerLeft : MonoBehaviour
 	public LayerMask laserMask;
 	public static float yNudgeAmount = 0f; // specific to teleportAimerObject height
 	private static readonly Vector3 yNudgeVector = new Vector3(0f, yNudgeAmount, 0f);
-	public float Height = 1f; // specific to teleportAimerObject height;
+	public float Height = 0f; // specific to teleportAimerObject height;
 
 	// Use this for initialization
 	void Start()
