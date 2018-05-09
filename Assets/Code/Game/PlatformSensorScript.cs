@@ -10,15 +10,7 @@ public class PlatformSensorScript : MonoBehaviour {
 	public bool ballIsOutside = false;
 	public bool playerIsInside = true;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
 	private void OnTriggerExit(Collider other)
 	{

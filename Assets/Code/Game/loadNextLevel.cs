@@ -7,15 +7,7 @@ public class loadNextLevel : MonoBehaviour {
 	public List<GameObject> starPrefabs;
 	public SteamVR_LoadLevel loadLevel;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
 	private void OnTriggerEnter(Collider other)
 	{

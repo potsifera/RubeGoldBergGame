@@ -19,10 +19,7 @@ public class BallReset : MonoBehaviour {
 		Debug.Log(initialPosition);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
 	void OnTriggerStay(Collider other)
 	{
