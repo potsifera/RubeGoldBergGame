@@ -34,7 +34,7 @@ public class ControllerInputManagerRight : MonoBehaviour {
 		}
 
 		if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad)) {
-			Debug.Log("right touchpad");
+			//Debug.Log("right touchpad");
 			objectMenu.SetActive(true);
 			touchCurrent = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
 			distance = touchCurrent - touchLast;
